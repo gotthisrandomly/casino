@@ -3,6 +3,8 @@ import AdminLogin from '../components/admin/AdminLogin.vue'
 import Reports from '../components/admin/Reports.vue'
 import SecuritySettings from '../components/admin/SecuritySettings.vue'
 import MaintenanceMode from '../components/admin/MaintenanceMode.vue'
+import UserManagement from '../components/admin/UserManagement.vue'
+import GameConfiguration from '../components/admin/GameConfiguration.vue'
 
 export const adminRoutes = [
   {
@@ -38,6 +40,18 @@ export const adminRoutes = [
     name: 'admin-maintenance',
     component: MaintenanceMode,
     meta: { requiresAuth: true, requiresAdmin: true }
+  },
+  {
+    path: '/admin/users',
+    name: 'admin-users',
+    component: UserManagement,
+    meta: { requiresAuth: true, requiresAdmin: true }
+  },
+  {
+    path: '/admin/games',
+    name: 'admin-games',
+    component: GameConfiguration,
+    meta: { requiresAuth: true, requiresAdmin: true }
   }
 ]
 
@@ -48,6 +62,17 @@ export function setupAdminNavigationGuards(router) {
     const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin)
     const isLoggedIn = !!localStorage.getItem('admin_token')
     
+    if (requiresAuth && !isLoggedIn) {
+      next('/admin/login')
+    } else if (requiresAdmin && !isLoggedIn) {
+      next('/admin/login')
+    } else if (to.path === '/admin/login' && isLoggedIn) {
+      next('/admin/dashboard')
+    } else {
+      next()
+    }
+  })
+}
     if (requiresAuth && !isLoggedIn) {
       next('/admin/login')
     } else if (requiresAdmin && !isLoggedIn) {
