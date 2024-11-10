@@ -5,49 +5,7 @@
     </div>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <!-- 2FA Settings -->
-      <div class="bg-white shadow rounded-lg p-6">
-        <h3 class="text-lg font-medium text-gray-900 mb-4">Two-Factor Authentication</h3>
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm text-gray-500">Enable 2FA for admin access</p>
-              <p v-if="security.twoFactorEnabled" class="text-xs text-green-600">Currently enabled</p>
-              <p v-else class="text-xs text-gray-400">Currently disabled</p>
-            </div>
-            <button
-              @click="toggleTwoFactor"
-              :class="[
-                'px-4 py-2 text-sm font-medium rounded-md',
-                security.twoFactorEnabled
-                  ? 'bg-red-100 text-red-600 hover:bg-red-200'
-                  : 'bg-green-100 text-green-600 hover:bg-green-200'
-              ]"
-            >
-              {{ security.twoFactorEnabled ? 'Disable' : 'Enable' }}
-            </button>
-          </div>
-          
-          <div v-if="showQRCode" class="mt-4">
-            <p class="text-sm text-gray-500 mb-2">Scan this QR code with your authenticator app:</p>
-            <img :src="qrCodeUrl" alt="2FA QR Code" class="mb-4">
-            <div class="flex space-x-2">
-              <input
-                v-model="verificationCode"
-                type="text"
-                placeholder="Enter verification code"
-                class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              >
-              <button
-                @click="verifyTwoFactor"
-                class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-              >
-                Verify
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       <!-- IP Whitelist -->
       <div class="bg-white shadow rounded-lg p-6">
@@ -204,7 +162,7 @@ export default {
   data() {
     return {
       security: {
-        twoFactorEnabled: false,
+
         ipWhitelistEnabled: false,
         whitelistedIps: [],
         maxLoginAttempts: 5,
@@ -218,10 +176,7 @@ export default {
           requireSpecialChars: true
         }
       },
-      showQRCode: false,
-      qrCodeUrl: '',
-      verificationCode: ''
-    }
+
   },
 
   methods: {
@@ -243,40 +198,6 @@ export default {
       }
     },
 
-    async toggleTwoFactor() {
-      if (!this.security.twoFactorEnabled) {
-        try {
-          const response = await this.$axios.post('/api/admin/security/2fa/enable')
-          this.qrCodeUrl = response.data.qrCode
-          this.showQRCode = true
-        } catch (error) {
-          this.$toast.error('Failed to enable 2FA')
-        }
-      } else {
-        try {
-          await this.$axios.post('/api/admin/security/2fa/disable')
-          this.security.twoFactorEnabled = false
-          this.showQRCode = false
-          this.$toast.success('2FA disabled successfully')
-        } catch (error) {
-          this.$toast.error('Failed to disable 2FA')
-        }
-      }
-    },
-
-    async verifyTwoFactor() {
-      try {
-        await this.$axios.post('/api/admin/security/2fa/verify', {
-          code: this.verificationCode
-        })
-        this.security.twoFactorEnabled = true
-        this.showQRCode = false
-        this.verificationCode = ''
-        this.$toast.success('2FA enabled successfully')
-      } catch (error) {
-        this.$toast.error('Invalid verification code')
-      }
-    },
 
     toggleIpWhitelist() {
       this.security.ipWhitelistEnabled = !this.security.ipWhitelistEnabled
