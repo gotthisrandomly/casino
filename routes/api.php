@@ -1,22 +1,26 @@
 <?php
 
-use App\Http\Controllers\Api\GameController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make fun!
+|
 */
 
-// Public routes
-Route::get('games', [GameController::class, 'index']);
-Route::get('games/{game}', [GameController::class, 'show']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-// Protected routes
-Route::middleware('auth:sanctum')->group(function () {
-    // Game session management
-    Route::post('games/{game}/initialize', [GameController::class, 'initialize']);
-    Route::post('sessions/{session}/play', [GameController::class, 'play']);
+// Admin Routes
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    require __DIR__.'/admin.php';
+});
     Route::post('sessions/{session}/end', [GameController::class, 'end']);
 });
