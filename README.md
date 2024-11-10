@@ -1,18 +1,16 @@
 # SDSlotman Casino Platform
-
-A modern, secure, and feature-rich casino gaming platform built with Laravel and Vue.js.
+##casino gaming platform built with Laravel and Vue.js.
 
 ## Features
 
-- 🎰 Multiple slot games
-- 💳 Secure payment processing
-- 🔐 Advanced security features
+- 🎰 slot games
+- 💳 payment processing
+- 🔐 security features
 - 📱 Mobile-responsive design
 - 🎮 Real-time gaming experience
 - 📊 Comprehensive admin dashboard
 - 🔄 Automated backup system
 - 📈 Detailed analytics
-- 🌐 Multi-language support
 - 💰 Multiple currency support
 
 ## Requirements
@@ -88,8 +86,6 @@ CASINO_DAILY_WITHDRAWAL_LIMIT=20000
 ```
 
 ### Security
-
-- Enable Two-Factor Authentication
 - Configure rate limiting
 - Set up SSL certificates
 - Configure backup settings
@@ -149,13 +145,12 @@ php artisan make:game NewGame
 - XSS Prevention
 - SQL Injection Protection
 - Rate Limiting
-- Two-Factor Authentication
 - Session Security
 - Data Encryption
 
 ### Reporting Issues
 
-Report security vulnerabilities to security@casino.com
+Report security vulnerabilities to gotthisrandomly@github.com
 
 ## Contributing
 
@@ -167,16 +162,14 @@ Report security vulnerabilities to security@casino.com
 
 ## License
 
-This project is licensed under the MIT License. See LICENSE file.
+Open Source
 
 ## Support
 
-- Documentation: [docs.casino.com](https://docs.casino.com)
+- Documentation: [docs.casino.com](https://github.com/gotthisrandomly/casino/README.md)
 - Issues: GitHub Issues
-- Email: support@casino.com
+- Email: support: gotthisrandomly@github.com
 
 ## Authors
-
-- John Doe - Lead Developer
-- Jane Smith - Backend Engineer
-- Bob Johnson - Frontend Developer
+- gotthisrandomly
+-based on original design by the creators of GoldenX Casino
