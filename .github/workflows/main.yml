@@ -1,0 +1,107 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: casino_test
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, dom, fileinfo, mysql
+        coverage: xdebug
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Copy .env
+      run: cp .env.example .env
+
+    - name: Install Dependencies
+      run: |
+        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        npm install
+
+    - name: Generate key
+      run: php artisan key:generate
+
+    - name: Set up test database
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+        php artisan migrate --env=testing
+
+    - name: Run Laravel Tests
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: vendor/bin/phpunit --coverage-text
+
+    - name: Run Frontend Tests
+      run: npm test
+
+    - name: Build Frontend
+      run: npm run build
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to Termux
+      env:
+        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      run: |
+        # Add host key verification
+        mkdir -p ~/.ssh
+        ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+        
+        # Transfer files
+        rsync -az --delete ./ $DEPLOY_USER@$DEPLOY_HOST:~/casino/
+        
+        # Run deployment script
+        ssh $DEPLOY_USER@$DEPLOY_HOST 'cd ~/casino && bash deploy-termux.sh'
+
+    - name: Send deployment notification
+      if: always()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: deployments
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Casino deployment to Termux ${{ job.status }}'
+        SLACK_TITLE: Deployment Status
+        SLACK_USERNAME: DeployBot
