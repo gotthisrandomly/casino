@@ -1,4 +1,120 @@
-# SDSlotman Casino Platform
+# Casino Platform
+
+A modern and secure online casino platform built with Laravel and Vue.js.
+
+## Features
+
+- User Authentication and Authorization
+- Admin Dashboard
+- User Management
+- Game Management
+- Transaction History
+- Real-time Updates
+- Secure Payment Processing
+- Responsive Design
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- PHP >= 8.1
+- Composer
+- Node.js >= 16.x
+- NPM >= 8.x
+- PostgreSQL >= 13.x
+- Redis (optional, for better performance)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/gotthisrandomly/casino.git
+   cd casino
+   ```
+
+2. Run the installation script:
+   ```bash
+   ./install.sh
+   ```
+
+   This script will:
+   - Copy .env.example to .env
+   - Install PHP dependencies
+   - Install Node.js dependencies
+   - Generate application key
+   - Run database migrations
+   - Build frontend assets
+   - Create storage link
+   - Set proper permissions
+
+3. Configure your database in the .env file:
+   ```
+   DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=casino
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+
+4. Create an admin user:
+   ```bash
+   php artisan casino:create-admin
+   ```
+
+5. Start the development server:
+   ```bash
+   php artisan serve
+   ```
+
+6. Start the frontend development server (in a new terminal):
+   ```bash
+   npm run dev
+   ```
+
+The application will be available at `http://localhost:8000`
+
+## Development
+
+- Run tests:
+  ```bash
+  php artisan test
+  ```
+
+- Run code style checks:
+  ```bash
+  ./vendor/bin/pint
+  ```
+
+- Watch for changes and rebuild assets:
+  ```bash
+  npm run watch
+  ```
+
+## Security
+
+This platform implements several security measures:
+- CSRF Protection
+- XSS Prevention
+- SQL Injection Prevention
+- Rate Limiting
+- Input Validation
+- Secure Session Handling
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
+
+## License
+
+The Casino Platform is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For support, please email support@casino.com or open an issue in the GitHub repository.
 ##casino gaming platform built with Laravel and Vue.js.
 
 ## Features
