@@ -99,30 +99,3 @@
   "minimum-stability": "stable",
   "prefer-stable": true
 }
-    ],
-    "test-coverage": [
-      "./vendor/bin/pest --coverage"
-    ],
-    "format": [
-      "./vendor/bin/pint"
-    ]
-  },
-  "extra": {
-    "laravel": {
-      "dont-discover": [
-        "laravel/telescope"
-      ]
-    }
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
-    "sort-packages": true,
-    "allow-plugins": {
-      "pestphp/pest-plugin": true,
-      "php-http/discovery": true
-    }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true
-}
