@@ -17,10 +17,16 @@
                 Logout
               </button>
             </div>
-            <button v-else @click="showLoginModal = true"
-                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Login
-            </button>
+            <div v-else class="flex items-center space-x-2">
+              <button @click="showLoginModal = true; isAdminLogin = false"
+                      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Login
+              </button>
+              <button @click="showLoginModal = true; isAdminLogin = true"
+                      class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                Admin Login
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +53,7 @@
     <div v-if="showLoginModal" 
          class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg p-8 max-w-md w-full">
-        <h2 class="text-2xl font-bold mb-4">Login</h2>
+        <h2 class="text-2xl font-bold mb-4">{{ isAdminLogin ? 'Admin Login' : 'User Login' }}</h2>
         <form @submit.prevent="login" class="space-y-4">
           <div>
             <label class="block text-gray-700 mb-2">Email</label>
@@ -72,7 +78,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'App',
@@ -83,6 +88,7 @@ export default {
       loading: false,
       error: null,
       showLoginModal: false,
+      isAdminLogin: false,
       loginForm: {
         email: '',
         password: ''
@@ -105,17 +111,22 @@ export default {
       this.error = null
 
       try {
-        const response = await axios.post('/api/login', this.loginForm)
+        const endpoint = this.isAdminLogin ? '/api/admin/login' : '/api/login'
+        const response = await axios.post(endpoint, this.loginForm)
         this.user = response.data
         this.showLoginModal = false
         this.loginForm = { email: '', password: '' }
+        
+        // Redirect to admin dashboard if admin login
+        if (this.isAdminLogin && response.data.is_admin) {
+          this.$router.push('/admin/dashboard')
+        }
       } catch (error) {
         this.error = error.response?.data?.message || 'Login failed'
       } finally {
         this.loading = false
       }
     },
-
     async logout() {
       this.loading = true
       this.error = null
