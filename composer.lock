@@ -36,6 +36,95 @@
       }
     },
     {
+      "name": "maatwebsite/excel",
+      "version": "3.1.60",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
+        "reference": "3.1.60"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/3.1.60",
+        "reference": "3.1.60",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "phpoffice/phpspreadsheet": "^1.29.4",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "phpoffice/phpspreadsheet",
+      "version": "1.29.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
+        "reference": "1.29.4"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/1.29.4",
+        "reference": "1.29.4",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.4 || ^8.0"
+      },
+      "type": "library"
+    }
+  ],
+  "packages-dev": [],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": true,
+  "prefer-lowest": false,
+  "platform": {
+    "php": "^8.1"
+  },
+  "platform-dev": [],
+  "plugin-api-version": "2.3.0"
+}
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "93b345e80e97403f2f9773262d6957cd",
+  "packages": [
+    {
+      "name": "laravel/framework",
+      "version": "v10.10.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/framework.git",
+        "reference": "v10.10.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/framework/zipball/v10.10.0",
+        "reference": "v10.10.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "10.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\": "src/Illuminate/"
+        }
+      }
+    },
+    {
       "name": "laravel/sanctum",
       "version": "v3.2.1",
       "source": {
