@@ -1,0 +1,267 @@
+{
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "93b345e80e97403f2f9773262d6957cd",
+  "packages": [
+    {
+      "name": "laravel/framework",
+      "version": "v10.10.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/framework.git",
+        "reference": "v10.10.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/framework/zipball/v10.10.0",
+        "reference": "v10.10.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "10.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\": "src/Illuminate/"
+        }
+      }
+    },
+    {
+      "name": "laravel/sanctum",
+      "version": "v3.2.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/sanctum.git",
+        "reference": "v3.2.1"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/sanctum/zipball/v3.2.1",
+        "reference": "v3.2.1",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "laravel/socialite",
+      "version": "v5.8.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/socialite.git",
+        "reference": "v5.8.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/socialite/zipball/v5.8.0",
+        "reference": "v5.8.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "stripe/stripe-php",
+      "version": "v10.12.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/stripe/stripe-php.git",
+        "reference": "v10.12.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/stripe/stripe-php/zipball/v10.12.0",
+        "reference": "v10.12.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.3.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "spatie/laravel-permission",
+      "version": "5.10.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/spatie/laravel-permission.git",
+        "reference": "5.10.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/5.10.0",
+        "reference": "5.10.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "spatie/laravel-activitylog",
+      "version": "4.7.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/spatie/laravel-activitylog.git",
+        "reference": "4.7.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/4.7.0",
+        "reference": "4.7.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "intervention/image",
+      "version": "2.7.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Intervention/image.git",
+        "reference": "2.7.2"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Intervention/image/zipball/2.7.2",
+        "reference": "2.7.2",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.4.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "maatwebsite/excel",
+      "version": "3.1.48",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
+        "reference": "3.1.48"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/3.1.48",
+        "reference": "3.1.48",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.0|^8.0",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    }
+  ],
+  "packages-dev": [
+    {
+      "name": "fakerphp/faker",
+      "version": "v1.20.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/FakerPHP/Faker.git",
+        "reference": "v1.20.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/v1.20.0",
+        "reference": "v1.20.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.4 || ^8.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "phpunit/phpunit",
+      "version": "10.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sebastianbergmann/phpunit.git",
+        "reference": "10.1.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/10.1.0",
+        "reference": "10.1.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.1"
+      },
+      "type": "library"
+    },
+    {
+      "name": "laravel/telescope",
+      "version": "v4.14.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/telescope.git",
+        "reference": "v4.14.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/telescope/zipball/v4.14.0",
+        "reference": "v4.14.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.0",
+        "laravel/framework": "^9.0|^10.0"
+      },
+      "type": "library"
+    },
+    {
+      "name": "barryvdh/laravel-debugbar",
+      "version": "v3.8.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/barryvdh/laravel-debugbar.git",
+        "reference": "v3.8.0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/v3.8.0",
+        "reference": "v3.8.0",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.0",
+        "laravel/framework": "^10.0"
+      },
+      "type": "library"
+    }
+  ],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": true,
+  "prefer-lowest": false,
+  "platform": {
+    "php": "^8.1"
+  },
+  "platform-dev": [],
+  "plugin-api-version": "2.3.0"
+}
