@@ -36,37 +36,24 @@ Before you begin, ensure you have the following installed:
    ./install.sh
    ```
 
-   This script will:
+   The installation script will:
    - Copy .env.example to .env
    - Install PHP dependencies
    - Install Node.js dependencies
+   - Configure the database (interactive)
    - Generate application key
    - Run database migrations
    - Build frontend assets
    - Create storage link
    - Set proper permissions
+   - Create an admin user (interactive)
 
-3. Configure your database in the .env file:
-   ```
-   DB_CONNECTION=pgsql
-   DB_HOST=127.0.0.1
-   DB_PORT=5432
-   DB_DATABASE=casino
-   DB_USERNAME=your_username
-   DB_PASSWORD=your_password
-   ```
-
-4. Create an admin user:
-   ```bash
-   php artisan casino:create-admin
-   ```
-
-5. Start the development server:
+3. Start the development server:
    ```bash
    php artisan serve
    ```
 
-6. Start the frontend development server (in a new terminal):
+4. Start the frontend development server (in a new terminal):
    ```bash
    npm run dev
    ```
@@ -115,89 +102,6 @@ The Casino Platform is open-sourced software licensed under the [MIT license](ht
 ## Support
 
 For support, please email support@casino.com or open an issue in the GitHub repository.
-##casino gaming platform built with Laravel and Vue.js.
-
-## Features
-
-- 🎰 slot games
-- 💳 payment processing
-- 🔐 security features
-- 📱 Mobile-responsive design
-- 🎮 Real-time gaming experience
-- 📊 Comprehensive admin dashboard
-- 🔄 Automated backup system
-- 📈 Detailed analytics
-- 💰 Multiple currency support
-
-## Requirements
-
-- PHP 8.1 or higher
-- PostgreSQL 13+
-- Redis Server
-- Node.js 16+
-- Composer 2+
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/sdslotman.git
-cd sdslotman
-```
-
-2. Install PHP dependencies:
-```bash
-composer install
-```
-
-3. Install JavaScript dependencies:
-```bash
-npm install
-```
-
-4. Set up environment file:
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-5. Configure your database in `.env`:
-```env
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=casino_db
-DB_USERNAME=casino_user
-DB_PASSWORD=your_secure_password
-```
-
-6. Run migrations and seeders:
-```bash
-php artisan migrate --seed
-```
-
-7. Build assets:
-```bash
-npm run build
-```
-
-8. Start the application:
-```bash
-php artisan serve
-```
-
-## Configuration
-
-### Casino Settings
-
-Configure casino-specific settings in your `.env`:
-
-```env
-CASINO_CURRENCY=USD
-CASINO_MIN_DEPOSIT=10
-CASINO_MAX_DEPOSIT=10000
-CASINO_MIN_WITHDRAWAL=20
-CASINO_MAX_WITHDRAWAL=5000
 CASINO_DAILY_WITHDRAWAL_LIMIT=20000
 ```
 
